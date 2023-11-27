@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Great Choice</title>
+  </head>
+  <body>
+    <section>
+      <div class="container">
+        <div class="inner-container">
+          <div class="row">
+            <div class="col">
+              <div class="text-details">
+                <div class="first-detail">
+                  <h2>Where would you like to use your Computer/Laptop ?</h2>
+                  <ul>
+                    <li>Gaming</li>
+                    <li>Video Editing</li>
+                    <li>Work / Studies</li>
+                  </ul>
+                </div>
+              </div>
+              <div class="controllers">
+                <button>Skip</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <script>
+      const textDetails = document.querySelector(
+        ".inner-container .text-details"
+      );
+      const firstDetail = document.querySelector(
+        ".inner-container .text-details .first-detail"
+      );
+      function gamingChoice() {
+        let nextDetail = `
+           <div class="second-detail">
+              <h2> Which device would you like to use ?</h2>
+                <ul>
+                  <li>Desktop Computer</li>
+                  <li>Laptop </li>
+                  <li>All-In-One Monitor </li>
+                </ul>
+             </div>
+           `;
+           function fade(element) {
+            var op = 1;  // initial opacity
+            var timer = setInterval(function () {
+                if (op <= 0.1){
+                    clearInterval(timer);
+                    textDetails.innerHTML = nextDetail;
+
+                }
+                element.style.opacity = op;
+                element.style.filter = 'alpha(opacity=' + op * 100 + ")";
+                op -= op * 0.1;
+            }, 50);
+        }
+        fade(firstDetail)
+      }
+      const li = textDetails.querySelectorAll('li')
+      for (let i = 0; i < li.length; i++) {
+             li[i].onclick = () =>{
+              gamingChoice()
+             }
+      }
+      
+    </script>
+    <style>
+      body{
+        overflow-y: hidden;
+      }
+      button {
+        width: 70px;
+        height: 40px;
+        background-color: rgb(26, 49, 66);
+        color: white;
+        border: none;
+        border-radius: 12px;
+        cursor: pointer;
+        position: fixed;
+      }
+      .container {
+        max-width: 1080px;
+        margin: auto;
+        font-family: Arial, Helvetica, sans-serif;
+        animation: anime 2s ease-out;
+      }
+      h2 {
+        font-size: 32px;
+        width: 900px;
+      }
+
+      ul li {
+        text-decoration: none;
+        list-style: none;
+        line-height: 50px;
+        background-color: rgb(235, 235, 235);
+        margin-top: 5px;
+        border-radius: 10px;
+        padding-left: 10px;
+        width: 700px;
+        cursor: pointer;
+      }
+      .row {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+      .controllers {
+        margin-top: 30px;
+      }
+      @keyframes anime {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+      
+    </style>
+  </body>
+</html>
